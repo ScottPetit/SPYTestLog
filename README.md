@@ -4,11 +4,11 @@
 
 SPYTestLog is a simple test utility to add some color to your Xcode console.  Instead of the drab and plain logs of plain ole XCTestLog
 
-![XCTestLog][http://imgur.com/3hZwVqa]
+![XCTestLog](http://imgur.com/3hZwVqa.png)
 
 You get the colorful output of SPYTestLog
 
-![SPYTestLog][http://imgur.com/VgxCuY3]
+![SPYTestLog](http://imgur.com/VgxCuY3.png)
 
 ## Integration
 
