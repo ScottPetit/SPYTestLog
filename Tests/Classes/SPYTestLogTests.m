@@ -31,10 +31,9 @@
     XCTAssertTrue(YES, @"");
 }
 
-- (void)testAnotherExample
+- (void)testFailingExample
 {
     NSString *a = @"a";
-    NSString *b = @"a";
     
     XCTAssertEqualObjects(a, nil, @"");
 }

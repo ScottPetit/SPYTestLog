@@ -8,9 +8,9 @@
 
 #import "SPYTestLog.h"
 
-#define SPY_XCODE_COLORS "XcodeColors"
-#define SPY_XCODE_COLORS_ESCAPE @"\033["
-#define SPY_XCODE_COLORS_RESET     SPY_XCODE_COLORS_ESCAPE @";"   // Clear any foreground or background color
+static char * const XcodeColors = "XcodeColors";
+static NSString * const XcodeColorsEscape = @"\033[";
+static NSString * const XcodeColorsReset = @"\033[;";
 
 @interface SPYTestLog ()
 {
@@ -40,7 +40,9 @@
 - (void)testCaseDidFail:(XCTestRun *)testRun withDescription:(NSString *)description inFile:(NSString *)filePath atLine:(NSUInteger)lineNumber
 {
     _testCaseDidFail = YES;
+    
     [super testCaseDidFail:testRun withDescription:description inFile:filePath atLine:lineNumber];
+    
     _testCaseDidFail = NO;
 }
 
@@ -50,15 +52,15 @@
 {
     if (_testCaseDidStop && _testCaseDidSucceed && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@%@ %@", SPY_XCODE_COLORS_ESCAPE, [self testCasePassedColor], format, SPY_XCODE_COLORS_RESET];
+        format = [NSString stringWithFormat:@"%@%@ %@ %@", XcodeColorsEscape, [self testCasePassedColor], format, XcodeColorsReset];
     }
     else if (_testCaseDidStop && !_testCaseDidSucceed && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@%@ %@", SPY_XCODE_COLORS_ESCAPE, [self testCaseFailedColor], format, SPY_XCODE_COLORS_RESET];
+        format = [NSString stringWithFormat:@"%@%@%@ %@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
     }
     else if (_testCaseDidFail && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@%@ %@", SPY_XCODE_COLORS_ESCAPE, [self testCaseFailedColor], format, SPY_XCODE_COLORS_RESET];
+        format = [NSString stringWithFormat:@"%@%@ %@ %@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
     }
     
     [super testLogWithFormat:format arguments:arguments];
@@ -80,7 +82,7 @@
 
 - (BOOL)hasXcodeColors
 {
-    char *xcode_colors = getenv(SPY_XCODE_COLORS);
+    char *xcode_colors = getenv(XcodeColors);
     return (xcode_colors && (strcmp(xcode_colors, "YES") == 0));
 }
 
