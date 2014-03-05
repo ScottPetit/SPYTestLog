@@ -4,7 +4,7 @@ Pod::Spec.new do |spec|
   spec.authors = {'Scott Petit' => 'petit.scott@gmail.com'}
   spec.homepage = 'https://github.com/ScottPetit/'
   spec.summary = 'XcodeColors meets XCTest'
-  spec.source = {:git => 'git@github.com:ScottPetit/SPYTestLog.git', :tag => "v#{spec.version}"}
+  spec.source = {:git => 'https://github.com/ScottPetit/SPYTestLog.git', :tag => "v#{spec.version}"}
   spec.license = { :type => 'MIT', :file => 'LICENSE' }
 
   spec.platform = :ios
