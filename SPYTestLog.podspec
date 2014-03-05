@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name = 'SPYTestLog'
-  spec.version = '0.0.1'
+  spec.version = '0.0.2'
   spec.authors = {'Scott Petit' => 'petit.scott@gmail.com'}
   spec.homepage = 'https://github.com/ScottPetit/'
   spec.summary = 'XcodeColors meets XCTest'
