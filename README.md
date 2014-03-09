@@ -22,17 +22,6 @@ target :YOUR_TEST_TARGET, :exclusive => true do
 end
 ```
 
-After adding that to your pod file and pod updating or installing you can tell your project to use SPYTestLog by adding the following to your application:didFinishLaunchingWithOptions:
-
-```
-#ifdef DEBUG
-    [[NSUserDefaults standardUserDefaults] setObject:@"SPYTestLog" forKey:@"XCTestObserverClass"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-#endif
-```
-
-This is the Apple’s preferred way of adding TestLogs to XCTest.
-
 ## Caveats
 One caveat is that SPYTestLog will add the format for XcodeColors to command line builds as well.  This means that if locally you run ‘xcodebuild’ there will be formatting in some of your test logs.  This also means that if locally you use ‘xcodebuild’ with something like [XCPretty](https://github.com/supermarin/xcpretty) you won’t get any output for your test logs.  If you have any suggestions for a way to fix this I’m all ears.
 

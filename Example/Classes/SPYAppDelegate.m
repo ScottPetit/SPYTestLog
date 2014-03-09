@@ -14,11 +14,6 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
-#ifdef DEBUG
-    [[NSUserDefaults standardUserDefaults] setObject:@"SPYTestLog" forKey:@"XCTestObserverClass"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-#endif
-    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

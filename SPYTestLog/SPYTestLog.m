@@ -25,6 +25,16 @@ static NSString * const XcodeColorsReset = @"\033[;";
 
 @implementation SPYTestLog
 
+#pragma mark - NSObject
+
++ (void)load
+{
+#if DEBUG
+    [[NSUserDefaults standardUserDefaults] setObject:@"SPYTestLog" forKey:@"XCTestObserverClass"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+#endif
+}
+
 #pragma mark - XCTestObserver
 
 - (void)testCaseDidStop:(XCTestRun *)testRun
@@ -52,15 +62,15 @@ static NSString * const XcodeColorsReset = @"\033[;";
 {
     if (_testCaseDidStop && _testCaseDidSucceed && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@ %@ %@", XcodeColorsEscape, [self testCasePassedColor], format, XcodeColorsReset];
+        format = [NSString stringWithFormat:@"%@%@%@%@", XcodeColorsEscape, [self testCasePassedColor], format, XcodeColorsReset];
     }
     else if (_testCaseDidStop && !_testCaseDidSucceed && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@%@ %@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
+        format = [NSString stringWithFormat:@"%@%@%@%@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
     }
     else if (_testCaseDidFail && [self hasXcodeColors])
     {
-        format = [NSString stringWithFormat:@"%@%@ %@ %@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
+        format = [NSString stringWithFormat:@"%@%@%@%@", XcodeColorsEscape, [self testCaseFailedColor], format, XcodeColorsReset];
     }
     
     [super testLogWithFormat:format arguments:arguments];

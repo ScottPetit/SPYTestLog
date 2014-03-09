@@ -33,9 +33,12 @@
 
 - (void)testFailingExample
 {
-    NSString *a = @"a";
-    
-    XCTAssertEqualObjects(a, nil, @"");
+    XCTFail(@"");
+}
+
+- (void)testAnotherPassingExample
+{
+    XCTAssertTrue(YES, @"");
 }
 
 @end
