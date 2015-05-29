@@ -18,7 +18,7 @@ The best and fastest way of integrating SPYTestLog is with CocoaPods.  SPYTestLo
 
 ```
 target :YOUR_TEST_TARGET, :exclusive => true do
-  pod 'SPYTestLog’
+  pod 'SPYTestLog'
 end
 ```
 
